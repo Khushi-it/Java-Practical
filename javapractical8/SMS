@@ -1,0 +1,118 @@
+import java.util.Scanner;
+
+class Student
+{
+    int regNo;
+    String name;
+    String branch;
+
+    void setData(int r, String n, String b)
+    {
+        regNo = r;
+        name = n;
+        branch = b;
+    }
+
+    void display()
+    {
+        System.out.println("Registration No: " + regNo);
+        System.out.println("Name: " + name);
+        System.out.println("Branch: " + branch);
+        System.out.println("----------------------");
+    }
+}
+
+class Management
+{
+    Student s[] = new Student[5];
+    int count = 0;
+
+    Scanner sc = new Scanner(System.in);
+
+    void addStudent()
+    {
+        if(count < 5)
+        {
+            Student st = new Student();
+
+            System.out.print("Enter Registration No: ");
+            int r = sc.nextInt();
+
+            sc.nextLine();
+
+            System.out.print("Enter Name: ");
+            String n = sc.nextLine();
+
+            System.out.print("Enter Branch: ");
+            String b = sc.nextLine();
+
+            st.setData(r, n, b);
+
+            s[count] = st;
+            count++;
+
+            System.out.println("Student Added Successfully");
+        }
+        else
+        {
+            System.out.println("Limit Reached");
+        }
+    }
+
+    void displayStudents()
+    {
+        if(count == 0)
+        {
+            System.out.println("No Students Found");
+        }
+        else
+        {
+            for(int i=0;i<count;i++)
+            {
+                s[i].display();
+            }
+        }
+    }
+}
+
+public class SMS
+{
+    public static void main(String args[])
+    {
+        Scanner sc = new Scanner(System.in);
+
+        Management m = new Management();
+
+        int choice;
+
+        do
+        {
+            System.out.println("\n--- Student Management System ---");
+            System.out.println("1. Add Student");
+            System.out.println("2. Display Students");
+            System.out.println("3. Exit");
+
+            System.out.print("Enter Choice: ");
+            choice = sc.nextInt();
+
+            switch(choice)
+            {
+                case 1:
+                    m.addStudent();
+                    break;
+
+                case 2:
+                    m.displayStudents();
+                    break;
+
+                case 3:
+                    System.out.println("Exiting...");
+                    break;
+
+                default:
+                    System.out.println("Invalid Choice");
+            }
+
+        }while(choice != 3);
+    }
+}
