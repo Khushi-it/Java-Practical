@@ -1,0 +1,42 @@
+import java.util.Scanner;
+
+public class PatternIterative{
+
+    public static void show(int size) {
+
+        int totalWidth = size * 2 - 1;
+        int center = size / 2 + size % 2;
+
+        for (int line = 1; line <= size; line++) {
+
+            int count;
+
+            if (line <= center) {
+                count = (line * 4) - 3;   
+            } else {
+                int temp = size - line + 1;
+                count = (temp * 4) - 3;
+            }
+
+            int blank = (totalWidth - count) / 2;
+            
+            for (int a = 0; a < blank; a++) {
+                System.out.print(" ");
+            }
+
+            for (int b = 0; b < count; b++) {
+                System.out.print("*");
+            }
+
+            System.out.println();
+        }
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter size: ");
+        int n = sc.nextInt();
+
+        show(n);
+    }
+}
