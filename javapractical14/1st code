@@ -1,0 +1,21 @@
+interface BankOperations {
+
+    void deposit(double amount);
+
+    void withdraw(double amount) throws LowBalanceException;
+
+    void checkBalance();
+
+    default void showBank() {
+        System.out.println("Welcome to Bank Interface");
+        helper();
+    }
+
+    static void bankRules() {
+        System.out.println("Follow bank rules properly");
+    }
+
+    private void helper() {
+        System.out.println("Private method inside interface");
+    }
+}
