@@ -1,0 +1,7 @@
+abstract class Account {
+
+    final int accountNumber = 12345; 
+    static String bankName = "ABC Bank"; 
+
+    abstract void accountInfo();
+}
